@@ -16,7 +16,7 @@ struct Sum *parse(const char *str)
 	struct Sum *expression;
 	if (yyparse(&expression, scan_info) != 0) { // Bison API
 		fprintf(stderr, "yyparse failed.\n");
-		return NULL;
+		expression = NULL;
 	}
 
 	yy_delete_buffer(in_buffer, scan_info); // Flex multi-input-buffer API (reentrant version)
